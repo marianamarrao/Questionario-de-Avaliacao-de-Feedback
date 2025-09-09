@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const secaoLembrete = document.querySelector("#lembrete");
     const botaoAvancar = document.querySelector("#botaoAvancar");
     const secaoPergunta = document.querySelector("#pergunta");
+    const secaoResultados = document.querySelector("#resultado");
+    const analises = document.querySelector("#analises");
 
     botaoIniciar.addEventListener("click", () => {
         secaoIniciar.style.display = "none";
@@ -53,11 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
         textoPergunta.textContent = perguntas[i];
 
         let respostas = {};
-          
-        let selecionados = {};
+        let pontuacoes = [];
     
         const proxima = document.querySelector("#proxima");
         const anterior = document.querySelector("#anterior");
+        const finalizar = document.querySelector("#finalizar")
         let opcaoSelecionada = null;
 
         function salvarOpcao() {
@@ -77,19 +79,18 @@ document.addEventListener("DOMContentLoaded", () => {
             textoProgresso.textContent = `${i + 1} de 30`;
             let porcentagem = (1 + i) * 100 / 30;
             barraProgresso.style.width = `${porcentagem}%`;
-            console.log(textoProgresso.textContent)
         }
 
         atualizarProgresso();
+
+        atualizarBotao();
         
         proxima.addEventListener("click", () => {
-            
-            if (i < 30){
+            if (i < 29){
                 salvarOpcao();
 
                 i++;
                 textoPergunta.textContent = perguntas[i];
-                console.log(respostas);
                 
                 let opcoes = document.querySelectorAll('input[name="opcao"]');
                 let indiceOpcao = Math.abs(respostas[i] - 3);
@@ -99,26 +100,54 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 atualizarProgresso();
+
+                if (i === 29){
+                    proxima.style.display = "none";
+                    finalizar.style.display = "flex";
+                    
+                    finalizar.addEventListener("click", () => {
+                        salvarOpcao();
+                        calcularPontuacao();
+                        console.log(pontuacoes)
+
+                        secaoPergunta.style.display = "none";
+                        secaoResultados.style.display = "flex";
+                        analises.style.display = "flex";
+
+                        dados.datasets[0].data = pontuacoes;
+                    })
+                }
             }
         });
         anterior.addEventListener("click", () => {
             if (i > 0) {
                 salvarOpcao();
-                console.log(respostas);
                 i--;
-                console.log(respostas[i])
                 let opcoes = document.querySelectorAll('input[name="opcao"]');
                 let indiceOpcao = Math.abs(respostas[i] - 3);
                 opcoes[indiceOpcao].checked = true;
 
                 textoPergunta.textContent = perguntas[i];
                 atualizarProgresso();
-            }
-        })
 
-        
+                if (finalizar.style.display === "flex"){
+                    finalizar.style.display = "none";
+                    proxima.style.display = "flex";
+                }
+            }
+        })        
+        function calcularPontuacao(){
+            pontuacoes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            for (j = 0; j < 3; j++){
+                for (k = 0; k < 10; k++){
+                    let index = (j * 10) + k 
+                    pontuacoes[k] += parseInt(respostas[index]);
+                }
+            }
+        }
         
     })
+
 
     
     
