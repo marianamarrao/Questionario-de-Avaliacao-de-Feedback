@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <title>Questionario - Preciso saber se estou indo bem</title>
+</head>
+
+<body>
+    <main>
+
+        <section id="iniciar">
+            <img src="imagens/image.png" alt="icone de chat">
+            <h1 style="margin: 0;">Questionário de Avaliação de Feedback</h1>
+            <p>Descubra seu estilo de dar feedback através de 30 perguntas cuidadosamente elaboradas</p>
+            <input type="button" value="Iniciar questionário">
+        </section>
+
+        <section id="lembrete">
+            <img src="imagens/sino.png" alt="sino">
+
+            <div class="lembrete-container">
+                <div class="linha"></div>
+                <h1>Lembrete</h1>
+                <div class="linha"></div>
+            </div>
+
+            <p>Os resultados da avaliação dependem da <strong>honestidade</strong> e <strong>objetividade</strong> das
+                respostas. Apesar de possíveis
+                imprecisões, o Questionário de Avaliação de Feedback é confiável para mais de 90% dos respondentes.</p>
+            <input type="button" value="Avançar">
+        </section>
+
+        <section id="pergunta">
+
+            <div class="parte-cima">
+                <p>1 de 30</p>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+
+            <h2>Pergunta</h2>
+
+            <label for="opcao">Muito próximo ao meu estilo<input type="radio" name="opcao"></label>
+            <label for="opcao">Próximo ao meu estilo<input type="radio" name="opcao"></label>
+            <label for="opcao">Quase o meu estilo<input type="radio" name="opcao"></label>
+            <label for="opcao">Nada a ver com o meu estilo<input type="radio" name="opcao"></label>
+
+            <label for="botao">
+                <input type="button" value="&larr;  Anterior" name="botao" id="Anterior">
+                <input type="button" value="Próxima  &rarr;" name="botao" id="Próxima">
+            </label>
+        </section>
+
+        <section id="resultado">
+            <h1>Seus Resultados de Feedback</h1>
+            <p>Análise completa do seu estilo de dar feedback</p>
+            <article>
+                <canvas id="grafico"></canvas>
+            </article>
+        </section>
+
+    </main>
+
+    <table id="pequenas" border="1px black">
+
+        <tr>
+            <td>
+                <article class="pequena">
+                    <div class="cab-pequena">
+                        <h5>Elaboração de um plano</h5>
+                    </div>
+                </article>
+            </td>
+            <td>
+                <article class="pequena">
+                    <div class="cab-pequena">
+                        <h5>Abordagem específica</h5>
+                    </div>
+                </article>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <article class="pequena">
+                    <h2></h2>
+                </article>
+            </td>
+            <td>
+                <article class="pequena">
+                    <h2></h2>
+                </article>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <article class="pequena">
+                    <h2></h2>
+                </article>
+            </td>
+            <td>
+                <article class="pequena">
+                    <h2></h2>
+                </article>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <article class="pequena">
+                    <h2></h2>
+                </article>
+            </td>
+            <td>
+                <article class="pequena">
+                    <h2></h2>
+                </article>
+            </td>
+        </tr>
+
+    </table>
+</body>
+
+</html>
