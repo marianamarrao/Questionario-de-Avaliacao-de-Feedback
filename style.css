@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
-  margin: 2rem;
+  margin: 0;
   background-color: rgba(242, 248, 255, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100dvh;
+  height: 100dvh;
   font-family: "Poppins", sans-serif;
   flex-direction: column;
+  padding: 0;
 }
 
 main {
@@ -23,7 +24,7 @@ main {
 }
 
 #iniciar {
-  display: none;
+  display: flex;
   width: 50%;
 
   flex-direction: column;
@@ -46,7 +47,7 @@ main {
     color: rgba(116, 116, 116, 1);
   }
 
-  input[type="button"] {
+  #botaoIniciar {
     color: rgba(242, 248, 255, 1);
     background-color: rgba(30, 64, 175, 1);
     font-weight: 600;
@@ -84,7 +85,7 @@ main {
     color: rgba(116, 116, 116, 1);
   }
 
-  input[value="Avançar"] {
+  #botaoAvancar {
     color: rgba(242, 248, 255, 1);
     background-color: rgba(30, 64, 175, 1);
     font-weight: 600;
@@ -133,7 +134,7 @@ main {
     }
   }
 
-  label[for="opcao"] {
+  .opcao {
     display: flex;
     justify-content: space-between;
 
@@ -144,6 +145,8 @@ main {
 
     border: 1px solid rgba(230, 230, 230, 1);
     border-radius: 9px;
+
+    cursor: pointer;
 
     input {
       cursor: pointer;
@@ -156,7 +159,7 @@ main {
     justify-content: space-around;
     gap: 5rem;
 
-    #Próxima {
+    #proxima {
       font-family: "Poppins", sans-serif;
       font-weight: 600;
 
@@ -170,7 +173,7 @@ main {
       border-radius: 8px;
     }
 
-    #Próxima:hover {
+    #proxima:hover {
       background-color: rgba(242, 248, 255, 1);
       color: rgba(30, 64, 175, 1);
       border: 1px solid rgba(30, 64, 175, 1);
@@ -178,7 +181,7 @@ main {
       cursor: pointer;
     }
 
-    #Anterior {
+    #anterior {
       font-family: "Poppins", sans-serif;
       font-weight: 600;
 
@@ -192,7 +195,7 @@ main {
       border-radius: 8px;
     }
 
-    #Anterior:hover {
+    #anterior:hover {
       border: 1px solid rgba(30, 64, 175, 1);
       transition: 0.2s ease;
       cursor: pointer;
@@ -203,7 +206,7 @@ main {
 }
 
 #resultado {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   text-align: center;
@@ -220,7 +223,7 @@ main {
 }
 
 #pequenas {
-  display: flex;
+  display: none;
   margin: 2rem;
 }
 

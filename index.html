@@ -17,7 +17,7 @@
             <img src="imagens/image.png" alt="icone de chat">
             <h1 style="margin: 0;">Questionário de Avaliação de Feedback</h1>
             <p>Descubra seu estilo de dar feedback através de 30 perguntas cuidadosamente elaboradas</p>
-            <input type="button" value="Iniciar questionário">
+            <button id="botaoIniciar">Iniciar questionario</button>
         </section>
 
         <section id="lembrete">
@@ -32,28 +32,28 @@
             <p>Os resultados da avaliação dependem da <strong>honestidade</strong> e <strong>objetividade</strong> das
                 respostas. Apesar de possíveis
                 imprecisões, o Questionário de Avaliação de Feedback é confiável para mais de 90% dos respondentes.</p>
-            <input type="button" value="Avançar">
+            <button id="botaoAvancar">Avançar</button>
         </section>
 
         <section id="pergunta">
 
             <div class="parte-cima">
-                <p>1 de 30</p>
+                <p id="textoProgresso"></p>
                 <div class="progress-container">
                     <div class="progress-bar"></div>
                 </div>
             </div>
 
-            <h2>Pergunta</h2>
+            <h2 id="textoPergunta">Pergunta</h2>
 
-            <label for="opcao">Muito próximo ao meu estilo<input type="radio" name="opcao"></label>
-            <label for="opcao">Próximo ao meu estilo<input type="radio" name="opcao"></label>
-            <label for="opcao">Quase o meu estilo<input type="radio" name="opcao"></label>
-            <label for="opcao">Nada a ver com o meu estilo<input type="radio" name="opcao"></label>
+            <label for="m" class="opcao">Muito próximo ao meu estilo<input type="radio" id="m" name="opcao" value="3" class="inputOpcao"></label>
+            <label for="p" class="opcao">Próximo ao meu estilo<input type="radio" id="p" name="opcao" value="2" class="inputOpcao"></label>
+            <label for="q" class="opcao">Quase o meu estilo<input type="radio" id="q" name="opcao" value="1" class="inputOpcao"></label>
+            <label for="n" class="opcao">Nada a ver com o meu estilo<input type="radio" id="n" name="opcao" value="0" class="inputOpcao"></label>
 
             <label for="botao">
-                <input type="button" value="&larr;  Anterior" name="botao" id="Anterior">
-                <input type="button" value="Próxima  &rarr;" name="botao" id="Próxima">
+                <button name="botao" id="anterior">&larr;  Anterior</button>
+                <button name="botao" id="proxima">Próxima  &rarr;</button>
             </label>
         </section>
 
