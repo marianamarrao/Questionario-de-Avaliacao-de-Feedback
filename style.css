@@ -286,3 +286,7 @@ main {
   min-width: 3.6rem;
   border-radius: 6px;
 }
+.main-depois {
+  margin-top: 5rem;
+  width: 76%;
+}

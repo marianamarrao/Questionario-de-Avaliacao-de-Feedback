@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    const main = document.querySelector("main");
     const botaoIniciar = document.querySelector("#botaoIniciar");
     const secaoIniciar = document.querySelector("#iniciar");
     const secaoLembrete = document.querySelector("#lembrete");
@@ -125,6 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         secaoPergunta.style.display = "none";
                         secaoResultados.style.display = "flex";
                         analises.style.display = "grid"; //Mostra as partes de análise
+                        main.classList.add("main-depois");
+                        
 
                         atualizarAnalises(); //Atualiza as análises
 
