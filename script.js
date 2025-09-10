@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const anterior = document.querySelector("#anterior");
         const finalizar = document.querySelector("#finalizar")
         let opcaoSelecionada = null;
+        proxima.disabled = true;
 
         function salvarOpcao() {
             document.querySelectorAll('input[name="opcao"]').forEach((opcao) => {
@@ -68,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     opcaoSelecionada = opcao.value;
                 }
                 opcao.checked = false;
+                proxima.disabled = true;
             });
 
             respostas[i] = opcaoSelecionada;
@@ -82,6 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         atualizarProgresso();
+        document.querySelectorAll('input[name="opcao"]').forEach((opcao) => {
+            opcao.addEventListener("click", () => {
+                proxima.disabled = false;
+            })
+        })
 
         // Avança para a próxima pergunta e salva a resposta atual
         proxima.addEventListener("click", () => {
@@ -96,7 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (!isNaN(indiceOpcao)) {
                     opcoes[indiceOpcao].checked = true; //Seleciona automaticamente uma opção já registrada
+                    proxima.disabled = false;
                 }
+
+                opcoes.forEach((opcao) => { //mudar a lógica para verificar se já tem uma opção selecionada
+                    opcao.addEventListener("click", () =>{
+                        proxima.disabled = false;
+                    })
+                })
 
                 atualizarProgresso(); //Atualiza a barra de progresso
 
@@ -127,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let opcoes = document.querySelectorAll('input[name="opcao"]');
                 let indiceOpcao = Math.abs(respostas[i] - 3);
                 opcoes[indiceOpcao].checked = true;
+                proxima.disabled = false;
 
                 textoPergunta.textContent = perguntas[i];
                 atualizarProgresso();

@@ -179,6 +179,15 @@ main {
       transition: 0.2s ease;
       cursor: pointer;
     }
+    .botaoAzul:disabled {
+      cursor: default;
+      background-color: rgb(30, 64, 175, 0.7);
+    }
+    .botaoAzul:disabled:hover {
+      background-color: rgb(30, 64, 175, 0.7);
+      border: none;
+      color: rgba(242, 248, 255, 1);
+    }
 
     #anterior {
       font-family: "Poppins", sans-serif;
