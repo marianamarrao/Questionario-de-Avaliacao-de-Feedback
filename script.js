@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         secaoLembrete.style.display = "none";
         secaoPergunta.style.display = "flex";
 
-        
+
         const perguntas = [
             "Quando dou feedback, utilizo exemplos específicos como base para discussão.",
             "Tento não adivinhar por que a pessoa agiu de determinada maneira. Prefiro me concentrar no que realmente foi feito.",
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let respostas = {};
         let pontuacoes = [];
-    
+
         const proxima = document.querySelector("#proxima");
         const anterior = document.querySelector("#anterior");
         const finalizar = document.querySelector("#finalizar")
@@ -69,10 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 opcao.checked = false;
             });
-        
+
             respostas[i] = opcaoSelecionada;
         }
-        function atualizarProgresso(){
+        function atualizarProgresso() {
             let barraProgresso = document.querySelector(".progress-bar");
             let textoProgresso = document.querySelector("#textoProgresso");
 
@@ -85,31 +85,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Avança para a próxima pergunta e salva a resposta atual
         proxima.addEventListener("click", () => {
-            if (i < 29){
+            if (i < 29) {
                 salvarOpcao();
 
                 i++;
                 textoPergunta.textContent = perguntas[i]; //Muda a pergunta
-                
+
                 let opcoes = document.querySelectorAll('input[name="opcao"]');
                 let indiceOpcao = Math.abs(respostas[i] - 3); //Calcula o índice correspondente da opção selecionada
-                
-                if (!isNaN(indiceOpcao)){
+
+                if (!isNaN(indiceOpcao)) {
                     opcoes[indiceOpcao].checked = true; //Seleciona automaticamente uma opção já registrada
                 }
 
                 atualizarProgresso(); //Atualiza a barra de progresso
 
-                if (i === 29){ //Condição especial para a última pergunta
+                if (i === 29) { //Condição especial para a última pergunta
                     proxima.style.display = "none";
                     finalizar.style.display = "flex"; //Transforma o botão de "próxima" para "finalizar"
-                    
+
                     finalizar.addEventListener("click", () => {
                         salvarOpcao(); //Salva a opção selecionada
                         calcularPontuacao(); //Calcula a pontuação
 
                         secaoPergunta.style.display = "none";
-                        secaoResultados.style.display = "flex"; 
+                        secaoResultados.style.display = "flex";
                         analises.style.display = "grid"; //Mostra as partes de análise
 
                         atualizarAnalises(); //Atualiza as análises
@@ -131,42 +131,47 @@ document.addEventListener("DOMContentLoaded", () => {
                 textoPergunta.textContent = perguntas[i];
                 atualizarProgresso();
 
-                if (finalizar.style.display === "flex"){
+                if (finalizar.style.display === "flex") {
                     finalizar.style.display = "none";
                     proxima.style.display = "flex";
                 }
             }
-        })      
+        })
         // Calcula a pontuação de cada "grupo" com base nas opções selecionadas  
-        function calcularPontuacao(){
-            pontuacoes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            for (let j = 0; j < 3; j++){
-                for (let k = 0; k < 10; k++){
-                    let index = (j * 10) + k 
+        function calcularPontuacao() {
+            pontuacoes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            for (let j = 0; j < 3; j++) {
+                for (let k = 0; k < 10; k++) {
+                    let index = (j * 10) + k;
                     pontuacoes[k] += parseInt(respostas[index]);
                 }
             }
         }
 
-        function atualizarAnalises(){
+        function atualizarAnalises() {
             let pontuacoes_pequena = document.querySelectorAll(".pontuacao-pequena");
             let situacoes = document.querySelectorAll(".situacao");
-            
-            for (let j = 0; j < situacoes.length; j++){
-                let pontuacao_atual = parseInt(pontuacoes[j])
-                pontuacoes_pequena[j].textContent = `${pontuacao_atual}/9 (${(pontuacao_atual * 100 / 9).toFixed(2)}%)`
-                
+
+            for (let j = 0; j < situacoes.length; j++) {
+                let pontuacao_atual = parseInt(pontuacoes[j]);
+                pontuacoes_pequena[j].textContent = `${pontuacao_atual}/9 (${(pontuacao_atual * 100 / 9).toFixed(2)}%)`;
+
+                let textoSituacao = pontuacao_atual > 6.5 ? "Forte" : "Em aprimoramento";
+                situacoes[j].innerHTML = `
+                <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>${textoSituacao}</strong></h1>
+                `;
+
             }
         }
-        
+
     })
 
 
-    
-    
+
+
     // Fazendo o gráfico
     const ctx = document.getElementById('grafico').getContext('2d');
-    
+
     const dados = {
         labels: [
             "Elaboração de um plano",
@@ -186,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
             backgroundColor: "rgba(30, 64, 175, 1)" // cor das barras
         }]
     };
-    
+
     const config = {
         type: 'bar', // tipo: gráfico de barras
         data: dados,
@@ -202,6 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     };
-    
+
     new Chart(ctx, config);
 })
