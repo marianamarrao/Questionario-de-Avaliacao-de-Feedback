@@ -83,42 +83,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
         atualizarProgresso();
 
-        atualizarBotao();
-        
+        // Avança para a próxima pergunta e salva a resposta atual
         proxima.addEventListener("click", () => {
             if (i < 29){
                 salvarOpcao();
 
                 i++;
-                textoPergunta.textContent = perguntas[i];
+                textoPergunta.textContent = perguntas[i]; //Muda a pergunta
                 
                 let opcoes = document.querySelectorAll('input[name="opcao"]');
-                let indiceOpcao = Math.abs(respostas[i] - 3);
+                let indiceOpcao = Math.abs(respostas[i] - 3); //Calcula o índice correspondente da opção selecionada
                 
                 if (!isNaN(indiceOpcao)){
-                    opcoes[indiceOpcao].checked = true;
+                    opcoes[indiceOpcao].checked = true; //Seleciona automaticamente uma opção já registrada
                 }
 
-                atualizarProgresso();
+                atualizarProgresso(); //Atualiza a barra de progresso
 
-                if (i === 29){
+                if (i === 29){ //Condição especial para a última pergunta
                     proxima.style.display = "none";
-                    finalizar.style.display = "flex";
+                    finalizar.style.display = "flex"; //Transforma o botão de "próxima" para "finalizar"
                     
                     finalizar.addEventListener("click", () => {
-                        salvarOpcao();
-                        calcularPontuacao();
-                        console.log(pontuacoes)
+                        salvarOpcao(); //Salva a opção selecionada
+                        calcularPontuacao(); //Calcula a pontuação
 
                         secaoPergunta.style.display = "none";
-                        secaoResultados.style.display = "flex";
-                        analises.style.display = "flex";
+                        secaoResultados.style.display = "flex"; 
+                        analises.style.display = "grid"; //Mostra as partes de análise
 
-                        dados.datasets[0].data = pontuacoes;
+                        atualizarAnalises(); //Atualiza as análises
+
+                        dados.datasets[0].data = pontuacoes; //Atualiza o gráfico
                     })
                 }
             }
         });
+        // Volta para a pergunta anterior (salvando a resposta atual)
         anterior.addEventListener("click", () => {
             if (i > 0) {
                 salvarOpcao();
@@ -135,14 +136,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     proxima.style.display = "flex";
                 }
             }
-        })        
+        })      
+        // Calcula a pontuação de cada "grupo" com base nas opções selecionadas  
         function calcularPontuacao(){
             pontuacoes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            for (j = 0; j < 3; j++){
-                for (k = 0; k < 10; k++){
+            for (let j = 0; j < 3; j++){
+                for (let k = 0; k < 10; k++){
                     let index = (j * 10) + k 
                     pontuacoes[k] += parseInt(respostas[index]);
                 }
+            }
+        }
+
+        function atualizarAnalises(){
+            let pontuacoes_pequena = document.querySelectorAll(".pontuacao-pequena");
+            let situacoes = document.querySelectorAll(".situacao");
+            
+            for (let j = 0; j < situacoes.length; j++){
+                let pontuacao_atual = parseInt(pontuacoes[j])
+                pontuacoes_pequena[j].textContent = `${pontuacao_atual}/9 (${(pontuacao_atual * 100 / 9).toFixed(2)}%)`
+                
             }
         }
         
@@ -184,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
             scales: {
                 x: {
                     beginAtZero: true, // eixo x começa no 0
-                    max: 10 // limite máximo 10, igual no seu gráfico
+                    max: 9
                 }
             }
         }
