@@ -184,10 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
     botaoRefazer.addEventListener("click", () => {
-        secaoResultados.style.display = "none";
-        analises.style.display = "none";
-        secaoIniciar.style.display = "flex";
-        main.classList.remove("main-depois");
+        location.reload();
     })
 
 
