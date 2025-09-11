@@ -18,12 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
         pontuacoes = raw ? JSON.parse(raw) : [];
-    } catch (e){
+    } catch (e) {
         pontuacoes = [];
     }
     console.log(pontuacoes, quizFeito);
 
-    
+
 
     botaoIniciar.addEventListener("click", () => {
         secaoIniciar.style.display = "none";
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         proxima.disabled = true;
 
 
-        
+
 
         atualizarProgresso();
         document.querySelectorAll('input[name="opcao"]').forEach((opcao) => {
@@ -100,11 +100,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (!isNaN(indiceOpcao)) {
                     opcoes[indiceOpcao].checked = true; //Seleciona automaticamente uma opção já registrada
+                    if (i == 29) {
+                        finalizar.disabled = false;
+                    } 
                     proxima.disabled = false;
                 }
 
                 opcoes.forEach((opcao) => { //mudar a lógica para verificar se já tem uma opção selecionada
-                    opcao.addEventListener("click", () =>{
+                    opcao.addEventListener("click", () => {
                         proxima.disabled = false;
                     })
                 })
@@ -114,6 +117,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (i === 29) { //Condição especial para a última pergunta
                     proxima.style.display = "none";
                     finalizar.style.display = "flex"; //Transforma o botão de "próxima" para "finalizar"
+                    finalizar.disabled = true;
+                    opcoes.forEach((opcao) => [
+                        opcao.addEventListener("click", () => {
+                            finalizar.disabled = false;
+                        })
+                    ])
 
                     finalizar.addEventListener("click", () => {
                         salvarOpcao(); //Salva a opção selecionada
@@ -123,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         secaoResultados.style.display = "flex";
                         analises.style.display = "grid"; //Mostra as partes de análise
                         main.classList.add("main-depois");
-                        
+
 
                         atualizarAnalises(pontuacoes); //Atualiza as análises
 
@@ -153,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         })
-        
+
     })
     botaoRefazer.addEventListener("click", () => {
         localStorage.setItem("quizFeito", "null");
@@ -204,14 +213,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     new Chart(ctx, config);
 
-    if (quizFeito === "true"){
+    if (quizFeito === "true") {
         secaoIniciar.style.display = "none";
         secaoResultados.style.display = "flex";
         analises.style.display = "grid";
         main.classList.add("main-depois");
         dados.datasets[0].data = pontuacoes;
         atualizarAnalises(pontuacoes);
-        
+
     }
 
     function salvarOpcao() {
