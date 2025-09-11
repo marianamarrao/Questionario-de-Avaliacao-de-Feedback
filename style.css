@@ -10,6 +10,7 @@ body {
   font-family: "Poppins", sans-serif;
   flex-direction: column;
   padding: 0;
+  box-sizing: border-box;
 }
 
 main {
@@ -157,38 +158,7 @@ main {
     display: flex;
     justify-content: space-around;
     gap: 5rem;
-
-    .botaoAzul {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-
-      background-color: rgba(30, 64, 175, 1);
-      color: rgba(242, 248, 255, 1);
-
-      padding-block: 0.75rem;
-      padding-inline: 2rem;
-
-      border: none;
-      border-radius: 8px;
-    }
-
-    .botaoAzul:hover {
-      background-color: rgba(242, 248, 255, 1);
-      color: rgba(30, 64, 175, 1);
-      border: 1px solid rgba(30, 64, 175, 1);
-      transition: 0.2s ease;
-      cursor: pointer;
-    }
-    .botaoAzul:disabled {
-      cursor: default;
-      background-color: rgb(30, 64, 175, 0.7);
-    }
-    .botaoAzul:disabled:hover {
-      background-color: rgb(30, 64, 175, 0.7);
-      border: none;
-      color: rgba(242, 248, 255, 1);
-    }
-
+    
     #anterior {
       font-family: "Poppins", sans-serif;
       font-weight: 600;
@@ -215,6 +185,36 @@ main {
 
     margin-top: auto;
   }
+}
+
+.botaoAzul {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+
+  background-color: rgba(30, 64, 175, 1);
+  color: rgba(242, 248, 255, 1);
+
+  padding-block: 0.75rem;
+  padding-inline: 2rem;
+
+  border: none;
+  border-radius: 8px;
+}
+.botaoAzul:hover {
+  background-color: rgba(242, 248, 255, 1);
+  color: rgba(30, 64, 175, 1);
+  border: 1px solid rgba(30, 64, 175, 1);
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+.botaoAzul:disabled {
+  cursor: default;
+  background-color: rgb(30, 64, 175, 0.7);
+}
+.botaoAzul:disabled:hover {
+  background-color: rgb(30, 64, 175, 0.7);
+  border: none;
+  color: rgba(242, 248, 255, 1);
 }
 
 #resultado {
@@ -289,4 +289,14 @@ main {
 .main-depois {
   margin-top: 5rem;
   width: 76%;
+}
+
+#analises > div {
+  display: flex;
+  justify-content: center;
+  width: 200%;
+}
+
+#botaoRefazer {
+  position: center;
 }

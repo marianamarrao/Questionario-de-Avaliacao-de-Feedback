@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const secaoPergunta = document.querySelector("#pergunta");
     const secaoResultados = document.querySelector("#resultado");
     const analises = document.querySelector("#analises");
+    const botaoRefazer = document.querySelector("#botaoRefazer");
 
     botaoIniciar.addEventListener("click", () => {
         secaoIniciar.style.display = "none";
@@ -181,7 +182,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
         }
-
+    })
+    botaoRefazer.addEventListener("click", () => {
+        secaoResultados.style.display = "none";
+        analises.style.display = "none";
+        secaoIniciar.style.display = "flex";
+        main.classList.remove("main-depois");
     })
 
 
