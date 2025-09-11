@@ -24,11 +24,7 @@
         <section id="lembrete">
             <img src="imagens/sino.png" alt="sino">
 
-            <div class="lembrete-container">
-                <div class="linha"></div>
-                <h1>Lembrete</h1>
-                <div class="linha"></div>
-            </div>
+            <h1>Lembrete</h1>
 
             <p>Os resultados da avaliação dependem da <strong>honestidade</strong> e <strong>objetividade</strong> das
                 respostas. Apesar de possíveis
@@ -43,6 +39,7 @@
                 <div class="progress-container">
                     <div class="progress-bar"></div>
                 </div>
+                <h1>Pergunta:</h1>
             </div>
 
             <h2 id="textoPergunta">Pergunta</h2>
@@ -57,9 +54,11 @@
                     class="inputOpcao"></label>
 
             <label for="botao">
-                <button name="botao" id="anterior">&larr; Anterior</button>
-                <button name="botao" id="proxima" class="botaoAzul">Próxima &rarr;</button>
-                <button name="botao" id="finalizar" class="botaoAzul">Ver resultados</button>
+                <button name="botao" id="anterior" class="seta"><img src="imagens/seta-esquerda.png"
+                        alt="seta para esquerda"></button>
+                <button name="botao" id="proxima" class="seta"><img src="imagens/seta-direita.png"
+                        alt="seta para direita"></button>
+                <button name="botao" id="finalizar">Ver resultados</button>
             </label>
         </section>
 
@@ -72,159 +71,167 @@
         </section>
 
     </main>
-
-    <div id="analises">
-        <article class="analise">
-            <div class="cab-pequena">
-                <h4>Elaboração de um plano</h4>
-                <div class="situacao">
-                    <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Em aprimoramento</strong></h1>
+    <div class="main-depois">
+        <div id="analises">
+            <article class="analise">
+                <div class="cab-pequena">
+                    <h4>Elaboração de um plano</h4>
+                    <div class="situacao">
+                        <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Em aprimoramento</strong></h1>
+                    </div>
                 </div>
-            </div>
-            <div class="meio-pequena">
-                <h4>Pontuação:</h4>
-                <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
-            </div>
-            <p>Significa refletir sobre o que você deve dizer e, então, dar o feedback com exemplos objetivos, tendo
-                sempre a solução na ponta da língua, mas sem deixar de levar em conta as necessidades e os desejos de
-                seu interlocutor.</p>
-        </article>
-
-        <article class="analise">
-            <div class="cab-pequena">
-                <h4>Abordagem específica</h4>
-                <div class="situacao">
-                    <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+                <div class="meio-pequena">
+                    <h4>Pontuação:</h4>
+                    <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
                 </div>
-            </div>
-            <div class="meio-pequena">
-                <h4>Pontuação:</h4>
-                <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
-            </div>
-            <p>Pressupõe saber o que de fato aconteceu para apresentar exemplos claros e compreensíveis, sem ter que
-                ficar levantando suposições.</p>
-        </article>
+                <p>Significa refletir sobre o que você deve dizer e, então, dar o feedback com exemplos objetivos, tendo
+                    sempre a solução na ponta da língua, mas sem deixar de levar em conta as necessidades e os desejos
+                    de
+                    seu interlocutor.</p>
+            </article>
 
-        <article class="analise">
-            <div class="cab-pequena">
-                <h4>Foco em comportamento</h4>
-                <div class="situacao">
-                    <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+            <article class="analise">
+                <div class="cab-pequena">
+                    <h4>Abordagem específica</h4>
+                    <div class="situacao">
+                        <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+                    </div>
                 </div>
-            </div>
-            <div class="meio-pequena">
-                <h4>Pontuação:</h4>
-                <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
-            </div>
-            <p>Mostra que o feedback eficiente não lida com personalidades, atitudes ou preconceitos, concentrando-se
-                apenas em comportamentos específicos que podem ser analisados e mensurados.</p>
-        </article>
+                <div class="meio-pequena">
+                    <h4>Pontuação:</h4>
+                    <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
+                </div>
+                <p>Pressupõe saber o que de fato aconteceu para apresentar exemplos claros e compreensíveis, sem ter que
+                    ficar levantando suposições.</p>
+            </article>
 
-        <article class="analise">
-            <div class="cab-pequena">
-                <h4>Escolha de hora e local</h4>
-                <div class="situacao">
-                    <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+            <article class="analise">
+                <div class="cab-pequena">
+                    <h4>Foco em comportamento</h4>
+                    <div class="situacao">
+                        <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+                    </div>
                 </div>
-            </div>
-            <div class="meio-pequena">
-                <h4>Pontuação:</h4>
-                <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
-            </div>
-            <p> Refere-se à agilidade com que o retorno deve ser dado e ao local apropriado para isso. O ideal é que a
-                opinião sobre um trabalho seja dada imediatamente, de preferência em um clima de pouca tensão. As
-                críticas nunca devem ser feitas em público.</p>
-        </article>
+                <div class="meio-pequena">
+                    <h4>Pontuação:</h4>
+                    <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
+                </div>
+                <p>Mostra que o feedback eficiente não lida com personalidades, atitudes ou preconceitos,
+                    concentrando-se
+                    apenas em comportamentos específicos que podem ser analisados e mensurados.</p>
+            </article>
 
-        <article class="analise">
-            <div class="cab-pequena">
-                <h4>Feedback equilibrado</h4>
-                <div class="situacao">
-                    <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+            <article class="analise">
+                <div class="cab-pequena">
+                    <h4>Escolha de hora e local</h4>
+                    <div class="situacao">
+                        <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+                    </div>
                 </div>
-            </div>
-            <div class="meio-pequena">
-                <h4>Pontuação:</h4>
-                <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
-            </div>
-            <p>Trata-se do equilíbrio entre o retorno positivo e o corretivo.</p>
-        </article>
+                <div class="meio-pequena">
+                    <h4>Pontuação:</h4>
+                    <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
+                </div>
+                <p> Refere-se à agilidade com que o retorno deve ser dado e ao local apropriado para isso. O ideal é que
+                    a
+                    opinião sobre um trabalho seja dada imediatamente, de preferência em um clima de pouca tensão. As
+                    críticas nunca devem ser feitas em público.</p>
+            </article>
 
-        <article class="analise">
-            <div class="cab-pequena">
-                <h4>Feedback relevante</h4>
-                <div class="situacao">
-                    <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+            <article class="analise">
+                <div class="cab-pequena">
+                    <h4>Feedback equilibrado</h4>
+                    <div class="situacao">
+                        <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+                    </div>
                 </div>
-            </div>
-            <div class="meio-pequena">
-                <h4>Pontuação:</h4>
-                <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
-            </div>
-            <p>Significa que, ao se relacionar com os outros e ao expressar uma opinião, não se deve perder a cabeça ou
-                exagerar. É fundamental ser objetivo e permanecer calmo. Os acontecimentos do aqui e agora são mais
-                importantes do que os de muito tempo atrás.</p>
-        </article>
+                <div class="meio-pequena">
+                    <h4>Pontuação:</h4>
+                    <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
+                </div>
+                <p>Trata-se do equilíbrio entre o retorno positivo e o corretivo.</p>
+            </article>
 
-        <article class="analise">
-            <div class="cab-pequena">
-                <h4>Técnicas eficientes</h4>
-                <div class="situacao">
-                    <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+            <article class="analise">
+                <div class="cab-pequena">
+                    <h4>Feedback relevante</h4>
+                    <div class="situacao">
+                        <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+                    </div>
                 </div>
-            </div>
-            <div class="meio-pequena">
-                <h4>Pontuação:</h4>
-                <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
-            </div>
-            <p>Trata-se de ir direto ao assunto, estabelecer contato visual e focar nas questões essenciais.</p>
-        </article>
+                <div class="meio-pequena">
+                    <h4>Pontuação:</h4>
+                    <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
+                </div>
+                <p>Significa que, ao se relacionar com os outros e ao expressar uma opinião, não se deve perder a cabeça
+                    ou
+                    exagerar. É fundamental ser objetivo e permanecer calmo. Os acontecimentos do aqui e agora são mais
+                    importantes do que os de muito tempo atrás.</p>
+            </article>
 
-        <article class="analise">
-            <div class="cab-pequena">
-                <h4>Estilo eficaz</h4>
-                <div class="situacao">
-                    <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+            <article class="analise">
+                <div class="cab-pequena">
+                    <h4>Técnicas eficientes</h4>
+                    <div class="situacao">
+                        <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+                    </div>
                 </div>
-            </div>
-            <div class="meio-pequena">
-                <h4>Pontuação:</h4>
-                <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
-            </div>
-            <p>O foco é a criação de uma abordagem pessoal na hora de dar feedback. Um estilo eficaz requer algum tempo
-                para ser desenvolvido e inclui a prática de não dar conselhos a menos que a pessoa solicite.</p>
-        </article>
+                <div class="meio-pequena">
+                    <h4>Pontuação:</h4>
+                    <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
+                </div>
+                <p>Trata-se de ir direto ao assunto, estabelecer contato visual e focar nas questões essenciais.</p>
+            </article>
 
-        <article class="analise">
-            <div class="cab-pequena">
-                <h4>Descrição de sentimentos</h4>
-                <div class="situacao">
-                    <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+            <article class="analise">
+                <div class="cab-pequena">
+                    <h4>Estilo eficaz</h4>
+                    <div class="situacao">
+                        <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+                    </div>
                 </div>
-            </div>
-            <div class="meio-pequena">
-                <h4>Pontuação:</h4>
-                <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
-            </div>
-            <p>Nossos sentimentos são importantes, além de serem poderosos e impactantes quando combinados com uma
-                mensagem de feedback.</p>
-        </article>
+                <div class="meio-pequena">
+                    <h4>Pontuação:</h4>
+                    <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
+                </div>
+                <p>O foco é a criação de uma abordagem pessoal na hora de dar feedback. Um estilo eficaz requer algum
+                    tempo
+                    para ser desenvolvido e inclui a prática de não dar conselhos a menos que a pessoa solicite.</p>
+            </article>
 
-        <article class="analise">
-            <div class="cab-pequena">
-                <h4>Capacidade de ouvir</h4>
-                <div class="situacao">
-                    <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+            <article class="analise">
+                <div class="cab-pequena">
+                    <h4>Descrição de sentimentos</h4>
+                    <div class="situacao">
+                        <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+                    </div>
                 </div>
-            </div>
-            <div class="meio-pequena">
-                <h4>Pontuação:</h4>
-                <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
-            </div>
-            <p>Consiste em encorajar a outra pessoa a expressar seu ponto de vista e então escutar atentamente o que ela
-                diz. isso requer a habilidade de fazer perguntas genéricas que estimulem a outra pessoa a dizer o que
-                pensa</p>
-        </article>
+                <div class="meio-pequena">
+                    <h4>Pontuação:</h4>
+                    <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
+                </div>
+                <p>Nossos sentimentos são importantes, além de serem poderosos e impactantes quando combinados com uma
+                    mensagem de feedback.</p>
+            </article>
+
+            <article class="analise">
+                <div class="cab-pequena">
+                    <h4>Capacidade de ouvir</h4>
+                    <div class="situacao">
+                        <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>Forte</strong></h1>
+                    </div>
+                </div>
+                <div class="meio-pequena">
+                    <h4>Pontuação:</h4>
+                    <h4 class="pontuacao-pequena">5/9 (55,5%)</h4>
+                </div>
+                <p>Consiste em encorajar a outra pessoa a expressar seu ponto de vista e então escutar atentamente o que
+                    ela
+                    diz. isso requer a habilidade de fazer perguntas genéricas que estimulem a outra pessoa a dizer o
+                    que
+                    pensa</p>
+            </article>
+        </div>
     </div>
 </body>
 
