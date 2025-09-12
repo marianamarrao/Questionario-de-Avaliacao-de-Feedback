@@ -1,6 +1,6 @@
 # Guia de Contribuição - Questionário de Avaliação de Feedback
 
-Obrigado por querer contribuir com nosso projetoooo!💗💗💗 <br> <br>
+Obrigado por querer contribuir com o nosso siteee!💗💗💗 <br> <br>
 Este guia vai te orientar a colaborar de forma organizada e eficiente.
 
 ---
@@ -18,30 +18,29 @@ Este guia vai te orientar a colaborar de forma organizada e eficiente.
    ```
 4. Crie uma branch para sua feature
   ```bash
-git checkout -b minha-feature
-```
+   git checkout -b minha-feature
+   ```
 
 Faça suas alterações: 
-- Mantenha o código organizado e comentado.
-- Siga o estilo de código existente.
-- Teste suas alterações antes de enviar.
+   - Mantenha o código organizado e comentado.
+   - Siga o estilo de código existente.
+   - Teste suas alterações antes de enviar.
 
 4. Commit e Push
 
-```bash
-git add .
-git commit -m "Descrição da minha feature"
-git push origin minha-feature
-```
+   ```bash
+   git add .
+   git commit -m "Descrição da minha feature"
+   git push origin minha-feature
+   ```
 
 5. Abra um Pull Request
 
-- Explique suas alterações.
-
-- Aguarde revisão e feedback :).
+   - Explique suas alterações.
+   - Aguarde revisão e feedback :)
 
 6. Reportar Bugs ou Sugestões
-- Use a aba Issues do GitHub.
-- Descreva o problema ou sugestão!
+   - Use a aba Issues do GitHub.
+   - Descreva o problema ou sugestão!
 
 
