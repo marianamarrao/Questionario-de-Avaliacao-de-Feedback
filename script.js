@@ -14,6 +14,40 @@ document.addEventListener("DOMContentLoaded", () => {
     let pontuacoes = [];
     var i = 0;
     let respostas = {};
+    const perguntas = [
+        "Quando dou feedback, utilizo exemplos específicos como base para discussão.",
+        "Tento não adivinhar por que a pessoa agiu de determinada maneira. Prefiro me concentrar no que realmente foi feito.",
+        "Focalizo o que a pessoa fez, não sua personalidade ou atitude.",
+        "Sempre que possível, dou feedback imediatamente após o evento.",
+        "Digo às pessoas o que elas fizeram corretamente e também o que elas fizeram de errado.",
+        "Faço de tudo para não perder a calma nem me exceder ao dar feedback corretivo.",
+        "Quando dou feedback, vou direto ao ponto, sem rodeios.",
+        "Não fico aguardando uma oportunidade para surpreender o funcionário fazendo algo errado.",
+        "Quando dou feedback, descrevo como me sinto a respeito do que aconteceu.",
+        "Quando estou corrigindo um comportamento, incentivo o outro a relatar seu próprio lado da história.",
+        "Quando dou feedback corretivo, elaboro algumas soluções possíveis antes do encontro.",
+        "Utilizo exemplos específicos ao dar feedback, para garantir que estou sendo muito claro.",
+        "Ao dar feedback, baseio-me em comportamentos.",
+        "Dou feedback em momentos mais tranqüilos, quando nenhuma das partes está pressionada pelo tempo.",
+        "Acredito que a pessoa merece saber o que está fazendo corretamente, assim como o que precisa ser melhorado.",
+        "Tento dar feedback corretivo quando posso manter a calma e agir de maneira objetiva.",
+        "Ao dar feedback, não evito contato visual. Ao contrário, faço questão de olhar diretamente para a outra pessoa.",
+        "Para mim, dar feedback é uma oportunidade de ajudar alguém, não uma chance de jogar em cima do outro algo que estava entalado na minha garganta.",
+        "Fico atento para comunicar meus sentimentos, em vez de culpar a outra pessoa.",
+        "Ao tentar corrigir um comportamento, uso perguntas abertas e explico o que estou pensando para garantir que estou compreendendo direito a situação.",
+        "Tento elaborar cada mensagem de feedback de acordo com a necessidade da pessoa.",
+        "Tento saber o que aconteceu, não fazer deduções.",
+        "Ao dar feedback, tento evitar rótulos do tipo “irresponsável”, “bom” ou “ruim”.",
+        "Evito dar feedback corretivo na frente dos outros.",
+        "Tento ser justo, equilibrando o uso de feedback positivo e corretivo.",
+        "Ao corrigir um comportamento específico, me apóio no “aqui e agora” e evito fazer referências ao passado.",
+        "Quando dou feedback, me concentro em uma ou duas questões de alta prioridade.",
+        "Ao oferecer feedback, não dou conselho a menos que a outra parte solicite.",
+        "Quando dou feedback, descrevo como me sinto para que a pessoa possa entender o impacto do comportamento em discussão.",
+        "Quando dou feedback corretivo, faço muitas perguntas para que eu possa analisar a situação do ponto de vista da outra pessoa."
+    ];
+    let totalPerguntas = perguntas.length;
+
 
 
     try {
@@ -21,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (e) {
         pontuacoes = [];
     }
-    console.log(pontuacoes, quizFeito);
 
 
 
@@ -34,38 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         secaoPergunta.style.display = "flex";
 
 
-        const perguntas = [
-            "Quando dou feedback, utilizo exemplos específicos como base para discussão.",
-            "Tento não adivinhar por que a pessoa agiu de determinada maneira. Prefiro me concentrar no que realmente foi feito.",
-            "Focalizo o que a pessoa fez, não sua personalidade ou atitude.",
-            "Sempre que possível, dou feedback imediatamente após o evento.",
-            "Digo às pessoas o que elas fizeram corretamente e também o que elas fizeram de errado.",
-            "Faço de tudo para não perder a calma nem me exceder ao dar feedback corretivo.",
-            "Quando dou feedback, vou direto ao ponto, sem rodeios.",
-            "Não fico aguardando uma oportunidade para surpreender o funcionário fazendo algo errado.",
-            "Quando dou feedback, descrevo como me sinto a respeito do que aconteceu.",
-            "Quando estou corrigindo um comportamento, incentivo o outro a relatar seu próprio lado da história.",
-            "Quando dou feedback corretivo, elaboro algumas soluções possíveis antes do encontro.",
-            "Utilizo exemplos específicos ao dar feedback, para garantir que estou sendo muito claro.",
-            "Ao dar feedback, baseio-me em comportamentos.",
-            "Dou feedback em momentos mais tranqüilos, quando nenhuma das partes está pressionada pelo tempo.",
-            "Acredito que a pessoa merece saber o que está fazendo corretamente, assim como o que precisa ser melhorado.",
-            "Tento dar feedback corretivo quando posso manter a calma e agir de maneira objetiva.",
-            "Ao dar feedback, não evito contato visual. Ao contrário, faço questão de olhar diretamente para a outra pessoa.",
-            "Para mim, dar feedback é uma oportunidade de ajudar alguém, não uma chance de jogar em cima do outro algo que estava entalado na minha garganta.",
-            "Fico atento para comunicar meus sentimentos, em vez de culpar a outra pessoa.",
-            "Ao tentar corrigir um comportamento, uso perguntas abertas e explico o que estou pensando para garantir que estou compreendendo direito a situação.",
-            "Tento elaborar cada mensagem de feedback de acordo com a necessidade da pessoa.",
-            "Tento saber o que aconteceu, não fazer deduções.",
-            "Ao dar feedback, tento evitar rótulos do tipo “irresponsável”, “bom” ou “ruim”.",
-            "Evito dar feedback corretivo na frente dos outros.",
-            "Tento ser justo, equilibrando o uso de feedback positivo e corretivo.",
-            "Ao corrigir um comportamento específico, me apóio no “aqui e agora” e evito fazer referências ao passado.",
-            "Quando dou feedback, me concentro em uma ou duas questões de alta prioridade.",
-            "Ao oferecer feedback, não dou conselho a menos que a outra parte solicite.",
-            "Quando dou feedback, descrevo como me sinto para que a pessoa possa entender o impacto do comportamento em discussão.",
-            "Quando dou feedback corretivo, faço muitas perguntas para que eu possa analisar a situação do ponto de vista da outra pessoa."
-        ];
+        
 
         let textoPergunta = document.querySelector("#textoPergunta");
         textoPergunta.textContent = perguntas[i];
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Avança para a próxima pergunta e salva a resposta atual
         proxima.addEventListener("click", () => {
-            if (i < 29) {
+            if (i < totalPerguntas - 1) {
                 salvarOpcao();
 
                 i++;
@@ -100,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (!isNaN(indiceOpcao)) {
                     opcoes[indiceOpcao].checked = true; //Seleciona automaticamente uma opção já registrada
-                    if (i == 29) {
+                    if (i == totalPerguntas - 1) {
                         finalizar.disabled = false;
                     } 
                     proxima.disabled = false;
@@ -114,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 atualizarProgresso(); //Atualiza a barra de progresso
 
-                if (i === 29) { //Condição especial para a última pergunta
+                if (i === totalPerguntas - 1) { //Condição especial para a última pergunta
                     proxima.style.display = "none";
                     finalizar.style.display = "flex"; //Transforma o botão de "próxima" para "finalizar"
                     finalizar.disabled = true;
@@ -205,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
             scales: {
                 x: {
                     beginAtZero: true, // eixo x começa no 0
-                    max: 9
+                    max: Math.trunc(totalPerguntas / 10) * 3
                 }
             }
         }
@@ -238,15 +240,16 @@ document.addEventListener("DOMContentLoaded", () => {
         let barraProgresso = document.querySelector(".progress-bar");
         let textoProgresso = document.querySelector("#textoProgresso");
 
-        textoProgresso.textContent = `${i + 1} de 30`;
-        let porcentagem = (1 + i) * 100 / 30;
+        textoProgresso.textContent = `${i + 1} de ${totalPerguntas}`;
+        let porcentagem = (1 + i) * 100 / totalPerguntas;
         barraProgresso.style.width = `${porcentagem}%`;
     }
+
 
     // Calcula a pontuação de cada "grupo" com base nas opções selecionadas  
     function calcularPontuacao() {
         pontuacoes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        for (let j = 0; j < 3; j++) {
+        for (let j = 0; j < Math.trunc(totalPerguntas / 10); j++) {
             for (let k = 0; k < 10; k++) {
                 let index = (j * 10) + k;
                 pontuacoes[k] += parseInt(respostas[index]);
@@ -260,9 +263,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (let j = 0; j < situacoes.length; j++) {
             let pontuacao_atual = parseInt(pontuacoes[j]);
-            pontuacoes_pequena[j].textContent = `${pontuacao_atual}/9 (${(pontuacao_atual * 100 / 9).toFixed(2)}%)`;
+            let pontuacao_total = Math.trunc(totalPerguntas / 10) * 3;
+            pontuacoes_pequena[j].textContent = `${pontuacao_atual}/${pontuacao_total} (${(pontuacao_atual * 100 / pontuacao_total).toFixed(2)}%)`;
 
-            let textoSituacao = pontuacao_atual > 6.5 ? "Forte" : "Em aprimoramento";
+            let textoSituacao = pontuacao_atual > pontuacao_total * 0.7 ? "Forte" : "Em aprimoramento";
             situacoes[j].innerHTML = `
             <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>${textoSituacao}</strong></h1>
             `;
