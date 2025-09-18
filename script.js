@@ -8,6 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const secaoPergunta = document.querySelector("#pergunta");
     const secaoResultados = document.querySelector("#resultado");
     const analises = document.querySelector("#analises");
+    const botaoRefazer = document.querySelector("#botaoRefazer");
+    let quizFeito = localStorage.getItem("quizFeito");
+    let raw = localStorage.getItem("pontuacao");
+    let pontuacoes = [];
+    var i = 0;
+    let respostas = {};
+
+
+    try {
+        pontuacoes = raw ? JSON.parse(raw) : [];
+    } catch (e) {
+        pontuacoes = [];
+    }
+    console.log(pontuacoes, quizFeito);
+
+
 
     botaoIniciar.addEventListener("click", () => {
         secaoIniciar.style.display = "none";
@@ -51,12 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "Quando dou feedback corretivo, faço muitas perguntas para que eu possa analisar a situação do ponto de vista da outra pessoa."
         ];
 
-        var i = 0;
         let textoPergunta = document.querySelector("#textoPergunta");
         textoPergunta.textContent = perguntas[i];
 
-        let respostas = {};
-        let pontuacoes = [];
 
         const proxima = document.querySelector("#proxima");
         const anterior = document.querySelector("#anterior");
@@ -64,25 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let opcaoSelecionada = null;
         proxima.disabled = true;
 
-        function salvarOpcao() {
-            document.querySelectorAll('input[name="opcao"]').forEach((opcao) => {
-                if (opcao.checked) {
-                    opcaoSelecionada = opcao.value;
-                }
-                opcao.checked = false;
-                proxima.disabled = true;
-            });
 
-            respostas[i] = opcaoSelecionada;
-        }
-        function atualizarProgresso() {
-            let barraProgresso = document.querySelector(".progress-bar");
-            let textoProgresso = document.querySelector("#textoProgresso");
 
-            textoProgresso.textContent = `${i + 1} de 30`;
-            let porcentagem = (1 + i) * 100 / 30;
-            barraProgresso.style.width = `${porcentagem}%`;
-        }
 
         atualizarProgresso();
         document.querySelectorAll('input[name="opcao"]').forEach((opcao) => {
@@ -104,11 +100,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (!isNaN(indiceOpcao)) {
                     opcoes[indiceOpcao].checked = true; //Seleciona automaticamente uma opção já registrada
+                    if (i == 29) {
+                        finalizar.disabled = false;
+                    } 
                     proxima.disabled = false;
                 }
 
                 opcoes.forEach((opcao) => { //mudar a lógica para verificar se já tem uma opção selecionada
-                    opcao.addEventListener("click", () =>{
+                    opcao.addEventListener("click", () => {
                         proxima.disabled = false;
                     })
                 })
@@ -118,6 +117,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (i === 29) { //Condição especial para a última pergunta
                     proxima.style.display = "none";
                     finalizar.style.display = "flex"; //Transforma o botão de "próxima" para "finalizar"
+                    finalizar.disabled = true;
+                    opcoes.forEach((opcao) => [
+                        opcao.addEventListener("click", () => {
+                            finalizar.disabled = false;
+                        })
+                    ])
 
                     finalizar.addEventListener("click", () => {
                         salvarOpcao(); //Salva a opção selecionada
@@ -127,11 +132,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         secaoResultados.style.display = "flex";
                         analises.style.display = "grid"; //Mostra as partes de análise
                         main.classList.add("main-depois");
-                        
 
-                        atualizarAnalises(); //Atualiza as análises
+
+                        atualizarAnalises(pontuacoes); //Atualiza as análises
 
                         dados.datasets[0].data = pontuacoes; //Atualiza o gráfico
+                        localStorage.setItem("quizFeito", "true");
+                        localStorage.setItem("pontuacao", JSON.stringify(pontuacoes));
                     })
                 }
             }
@@ -155,33 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         })
-        // Calcula a pontuação de cada "grupo" com base nas opções selecionadas  
-        function calcularPontuacao() {
-            pontuacoes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            for (let j = 0; j < 3; j++) {
-                for (let k = 0; k < 10; k++) {
-                    let index = (j * 10) + k;
-                    pontuacoes[k] += parseInt(respostas[index]);
-                }
-            }
-        }
 
-        function atualizarAnalises() {
-            let pontuacoes_pequena = document.querySelectorAll(".pontuacao-pequena");
-            let situacoes = document.querySelectorAll(".situacao");
-
-            for (let j = 0; j < situacoes.length; j++) {
-                let pontuacao_atual = parseInt(pontuacoes[j]);
-                pontuacoes_pequena[j].textContent = `${pontuacao_atual}/9 (${(pontuacao_atual * 100 / 9).toFixed(2)}%)`;
-
-                let textoSituacao = pontuacao_atual > 6.5 ? "Forte" : "Em aprimoramento";
-                situacoes[j].innerHTML = `
-                <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>${textoSituacao}</strong></h1>
-                `;
-
-            }
-        }
-
+    })
+    botaoRefazer.addEventListener("click", () => {
+        localStorage.setItem("quizFeito", "null");
+        location.reload();
     })
 
 
@@ -227,4 +212,61 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     new Chart(ctx, config);
+
+    if (quizFeito === "true") {
+        secaoIniciar.style.display = "none";
+        secaoResultados.style.display = "flex";
+        analises.style.display = "grid";
+        main.classList.add("main-depois");
+        dados.datasets[0].data = pontuacoes;
+        atualizarAnalises(pontuacoes);
+
+    }
+
+    function salvarOpcao() {
+        document.querySelectorAll('input[name="opcao"]').forEach((opcao) => {
+            if (opcao.checked) {
+                opcaoSelecionada = opcao.value;
+            }
+            opcao.checked = false;
+            proxima.disabled = true;
+        });
+
+        respostas[i] = opcaoSelecionada;
+    }
+    function atualizarProgresso() {
+        let barraProgresso = document.querySelector(".progress-bar");
+        let textoProgresso = document.querySelector("#textoProgresso");
+
+        textoProgresso.textContent = `${i + 1} de 30`;
+        let porcentagem = (1 + i) * 100 / 30;
+        barraProgresso.style.width = `${porcentagem}%`;
+    }
+
+    // Calcula a pontuação de cada "grupo" com base nas opções selecionadas  
+    function calcularPontuacao() {
+        pontuacoes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for (let j = 0; j < 3; j++) {
+            for (let k = 0; k < 10; k++) {
+                let index = (j * 10) + k;
+                pontuacoes[k] += parseInt(respostas[index]);
+            }
+        }
+    }
+
+    function atualizarAnalises(pontuacoes) {
+        let pontuacoes_pequena = document.querySelectorAll(".pontuacao-pequena");
+        let situacoes = document.querySelectorAll(".situacao");
+
+        for (let j = 0; j < situacoes.length; j++) {
+            let pontuacao_atual = parseInt(pontuacoes[j]);
+            pontuacoes_pequena[j].textContent = `${pontuacao_atual}/9 (${(pontuacao_atual * 100 / 9).toFixed(2)}%)`;
+
+            let textoSituacao = pontuacao_atual > 6.5 ? "Forte" : "Em aprimoramento";
+            situacoes[j].innerHTML = `
+            <h1 style="font-size: 10px; margin: 0; font-weight: 500;"><strong>${textoSituacao}</strong></h1>
+            `;
+
+        }
+    }
 })
